@@ -14,7 +14,7 @@ import { rendererConfig } from './webpack.renderer.config';
 const config: ForgeConfig = {
   packagerConfig: {
     asar: {
-      unpack: "(**/node_modules/sharp/**/*|**/node_modules/@img/**/*)"
+      unpack: "**/node_modules/{sharp,@img}/**/*"
     }
   },
   rebuildConfig: {},
@@ -37,13 +37,6 @@ const config: ForgeConfig = {
         ],
       },
     }),
-    {
-      name: "@timfish/forge-externals-plugin",
-      config: {
-        "externals": ["sharp"],
-        "includeDeps": true
-      }
-    },
     // Fuses are used to enable/disable various Electron functionality
     // at package time, before code signing the application
     new FusesPlugin({
